@@ -1,0 +1,31 @@
+{
+  "name": "task-manager",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "lint": "eslint . --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.43"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^22.20.4",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "eslint": "^9.39.5",
+    "eslint-plugin-vue": "^10.11.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^7.3.6",
+    "vue-tsc": "^3.3.11"
+  }
+}
