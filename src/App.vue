@@ -26,7 +26,7 @@ function removeTask(task: Readonly<Task>) {
       <p class="mt-8 max-w-md text-base leading-8 text-[#52685f]">
         为每天要做的事，留一个清晰的位置。
       </p>
-      <p class="mt-3 text-xs text-[#52685f]">任务仅保存在本次页面中，刷新后清空。</p>
+      <p class="mt-3 text-xs text-[#52685f]">任务保存在当前浏览器中。</p>
       <div class="mt-12 grid items-start gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <TaskForm :task="editingTask" @saved="editingId = undefined" @cancel="editingId = undefined" />
         <section aria-labelledby="task-list-heading" class="min-w-0">
