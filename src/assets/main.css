@@ -13,3 +13,16 @@ body {
   margin: 0;
   min-width: 320px;
 }
+
+.field {
+  @apply w-full rounded-none border border-[#243d35]/30 bg-white px-3 py-2 text-sm;
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible {
+  outline: 2px solid #a2643b;
+  outline-offset: 3px;
+}
+
+button {
+  cursor: pointer;
+}

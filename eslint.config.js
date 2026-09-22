@@ -10,5 +10,7 @@ export default tseslint.config(
   {
     files: ['**/*.vue'],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
+    // Vue 文件中的 TypeScript 未定义名称由 vue-tsc 检查（含 DOM 类型）。
+    rules: { 'no-undef': 'off' },
   },
 )

@@ -3,7 +3,7 @@ export type TaskPriority = 'high' | 'medium' | 'low'
 
 export interface Task {
   readonly id: string
-  /** 保存前 trim，不能为空。校验将在功能轮次实现。 */
+  /** 保存前 trim，不能为空。 */
   title: string
   description: string
   status: TaskStatus
