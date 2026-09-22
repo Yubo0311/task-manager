@@ -7,7 +7,8 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "test": "vitest run",
+    "test": "vitest run src",
+    "test:e2e": "playwright test",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "lint": "eslint . --max-warnings 0",
@@ -18,11 +19,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^22.20.4",
     "@vitejs/plugin-vue": "^6.0.9",
+    "@vue/test-utils": "^2.4.6",
     "eslint": "^9.39.5",
     "eslint-plugin-vue": "^10.11.0",
+    "jsdom": "^26.1.0",
     "tailwindcss": "^4.3.3",
     "typescript": "~5.9",
     "typescript-eslint": "^8.70.1",

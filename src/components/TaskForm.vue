@@ -19,6 +19,10 @@ function reset() {
 }
 
 watch(() => props.task, reset, { immediate: true })
+// 外部拖拽更新状态时同步该字段，不清空用户正在编辑的其他草稿。
+watch(() => props.task?.status, (status) => {
+  if (status) draft.status = status
+})
 
 function save() {
   if (!draft.title.trim()) {
@@ -37,22 +41,22 @@ function save() {
 </script>
 
 <template>
-  <form class="space-y-5 border border-[#243d35]/20 bg-white/60 p-6" novalidate @submit.prevent="save">
+  <form class="space-y-5 border border-[var(--line)] bg-[var(--surface)] p-6" novalidate @submit.prevent="save">
     <h2 class="text-xl font-semibold">{{ task ? '编辑任务' : '新增任务' }}</h2>
     <div>
-      <label for="task-title" class="mb-2 block text-sm font-semibold">标题 <span class="text-red-700">*</span></label>
+      <label for="task-title" class="mb-2 block text-sm font-semibold">标题 <span class="text-[var(--danger)]">*</span></label>
       <input id="task-title" ref="titleInput" v-model="draft.title" class="field" required :aria-invalid="!!error" :aria-describedby="error ? 'task-error' : undefined" placeholder="要完成什么？" />
-      <p v-if="error" id="task-error" role="alert" class="mt-2 text-sm text-red-700">{{ error }}</p>
+      <p v-if="error" id="task-error" role="alert" class="mt-2 text-sm text-[var(--danger)]">{{ error }}</p>
     </div>
     <div>
-      <label for="task-description" class="mb-2 block text-sm font-semibold">描述 <span class="font-normal text-[#52685f]">（选填）</span></label>
+      <label for="task-description" class="mb-2 block text-sm font-semibold">描述 <span class="font-normal text-[var(--muted)]">（选填）</span></label>
       <textarea id="task-description" v-model="draft.description" class="field min-h-28 resize-y" rows="3" />
     </div>
     <div class="grid grid-cols-2 gap-4">
       <div>
         <label for="task-status" class="mb-2 block text-sm font-semibold">状态</label>
         <select id="task-status" v-model="draft.status" class="field">
-          <option value="todo">待办</option><option value="doing">进行中</option><option value="done">已完成</option>
+          <option value="todo">待办</option><option value="doing">进行中</option><option value="done">完成</option>
         </select>
       </div>
       <div>
@@ -64,7 +68,7 @@ function save() {
     </div>
     <div class="flex flex-wrap gap-3">
       <button type="submit" class="bg-[#243d35] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#39594c]">{{ task ? '保存修改' : '添加任务' }}</button>
-      <button v-if="task" type="button" class="border border-[#243d35]/30 px-5 py-2.5 text-sm hover:bg-white" @click="emit('cancel')">取消编辑</button>
+      <button v-if="task" type="button" class="border border-[var(--line)] px-5 py-2.5 text-sm hover:bg-[var(--well)]" @click="emit('cancel')">取消编辑</button>
     </div>
   </form>
 </template>
